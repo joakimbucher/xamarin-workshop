@@ -1,6 +1,6 @@
-# Create Todo App
+# Create Todo App project
 
-## Create 1st Xamarin Forms app
+## Create Xamarin.Forms project
 ![](./images/2018-06-19-12-19-03.png)
 
 ![](./images/2018-06-19-12-24-46.png)
