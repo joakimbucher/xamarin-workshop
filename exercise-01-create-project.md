@@ -1,5 +1,9 @@
 # Create Todo App project
 
+## Take a look at the Xamarin Tools in Visual Studio
+- Android SDK Manager
+- Android Device Manager
+
 ## Create Xamarin.Forms project
 ![](./images/2018-06-19-12-19-03.png)
 
