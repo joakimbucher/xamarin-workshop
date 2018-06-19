@@ -4,11 +4,19 @@
              xmlns:local="clr-namespace:Xamarin.Workshop.ToDo"
              x:Class="Xamarin.Workshop.ToDo.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+    <StackLayout Margin="20">
+        <StackLayout Orientation="Horizontal" BackgroundColor="LightBlue">
+            <Label FontSize="20" Text="Read book" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="10, 0, 10, 0"/>
+            <Switch IsToggled="True" HorizontalOptions="End" VerticalOptions="Center" Margin="0, 0, 10, 0"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label FontSize="20" Text="Cook dinner" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="10, 0, 10, 0"/>
+            <Switch IsToggled="False" HorizontalOptions="End" VerticalOptions="Center" Margin="0, 0, 10, 0"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" BackgroundColor="LightBlue">
+            <Label FontSize="20" Text="Sleep" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="10, 0, 10, 0"/>
+            <Switch IsToggled="False" HorizontalOptions="End" VerticalOptions="Center" Margin="0, 0, 10, 0"/>
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>
