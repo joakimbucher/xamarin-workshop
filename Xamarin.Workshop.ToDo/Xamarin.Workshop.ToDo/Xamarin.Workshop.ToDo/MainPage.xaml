@@ -3,20 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Xamarin.Workshop.ToDo"
              x:Class="Xamarin.Workshop.ToDo.MainPage">
-
-    <StackLayout Margin="20">
-        <StackLayout Orientation="Horizontal" BackgroundColor="LightBlue">
-            <Label FontSize="20" Text="Read book" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="10, 0, 10, 0"/>
-            <Switch IsToggled="True" HorizontalOptions="End" VerticalOptions="Center" Margin="0, 0, 10, 0"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Label FontSize="20" Text="Cook dinner" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="10, 0, 10, 0"/>
-            <Switch IsToggled="False" HorizontalOptions="End" VerticalOptions="Center" Margin="0, 0, 10, 0"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" BackgroundColor="LightBlue">
-            <Label FontSize="20" Text="Sleep" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="10, 0, 10, 0"/>
-            <Switch IsToggled="False" HorizontalOptions="End" VerticalOptions="Center" Margin="0, 0, 10, 0"/>
-        </StackLayout>
-    </StackLayout>
-
+    <ListView ItemsSource="{Binding Todos}" Margin="20">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" Margin="10, 0, 10, 0"/>
+                        <Switch IsToggled="{Binding IsDone}" HorizontalOptions="End" VerticalOptions="Center" Margin="0, 0, 10, 0"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
