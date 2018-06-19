@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{BA75641F-7029-4F03-976E-992213F3838F}</ProjectGuid>
+    <ProjectGuid>{479B0D2F-287E-4C06-8D29-76F097ED7C9C}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Xamarin.Workshop.ToDo.UWP</RootNamespace>
@@ -148,7 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.Workshop.ToDo\Xamarin.Workshop.ToDo.csproj">
-      <Project>{D90D6979-5B41-47A0-ABD4-9AFAB6F6F987}</Project>
+      <Project>{5770CE3D-237A-495A-B96E-711237F659F0}</Project>
       <Name>Xamarin.Workshop.ToDo</Name>
     </ProjectReference>
   </ItemGroup>

@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2935AB8A-AB54-4A4F-A57E-837362A93465}</ProjectGuid>
+    <ProjectGuid>{9AEE2695-B57F-4C6A-927A-32976E862A89}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
@@ -152,7 +152,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.Workshop.ToDo\Xamarin.Workshop.ToDo.csproj">
-      <Project>{D90D6979-5B41-47A0-ABD4-9AFAB6F6F987}</Project>
+      <Project>{5770CE3D-237A-495A-B96E-711237F659F0}</Project>
       <Name>Xamarin.Workshop.ToDo</Name>
     </ProjectReference>
   </ItemGroup>

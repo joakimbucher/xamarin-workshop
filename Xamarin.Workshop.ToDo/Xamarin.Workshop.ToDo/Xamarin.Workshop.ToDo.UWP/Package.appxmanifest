@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="559350ef-27e1-43e5-916d-73320a5d1848"
-    Publisher="CN=f5d84489-bdec-443e-b708-a71c4ebdbf39"
+    Name="221087b2-7655-4fd5-9962-f12445eb1ee9"
+    Publisher="CN=6b6bfe7e-d49d-46b9-806d-c575f9c0b1d8"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Xamarin.Workshop.ToDo.UWP</DisplayName>
-    <PublisherDisplayName>f5d84489-bdec-443e-b708-a71c4ebdbf39</PublisherDisplayName>
+    <PublisherDisplayName>6b6bfe7e-d49d-46b9-806d-c575f9c0b1d8</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{58B3DDDA-C326-4530-AB55-096288B3D4CB}</ProjectGuid>
+    <ProjectGuid>{E2CE64B8-C040-4FF6-8A80-35F130612429}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
@@ -92,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.Workshop.ToDo\Xamarin.Workshop.ToDo.csproj">
-      <Project>{D90D6979-5B41-47A0-ABD4-9AFAB6F6F987}</Project>
+      <Project>{5770CE3D-237A-495A-B96E-711237F659F0}</Project>
       <Name>Xamarin.Workshop.ToDo</Name>
     </ProjectReference>
   </ItemGroup>
