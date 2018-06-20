@@ -2,17 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Xamarin.Workshop.ToDo"
-             x:Class="Xamarin.Workshop.ToDo.MainPage">
-    <ListView ItemsSource="{Binding Todos}" Margin="20">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" Margin="10, 0, 10, 0"/>
-                        <Switch IsToggled="{Binding IsDone}" HorizontalOptions="End" VerticalOptions="Center" Margin="0, 0, 10, 0"/>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+             x:Class="Xamarin.Workshop.ToDo.MainPage"
+             Title="My todo list">
+    <StackLayout Margin="20">
+        <ListView ItemsSource="{Binding Todos}" SelectedItem="{Binding SelectedTodo}" VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" Margin="10, 0, 10, 0"/>
+                            <Switch IsToggled="{Binding IsDone}" HorizontalOptions="End" VerticalOptions="Center" Margin="0, 0, 10, 0"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
+            <Button Text="Add" Command="{Binding AddTodoCommand}" />
+            <Button Text="Remove" Command="{Binding DeleteTodoCommand}" CommandParameter="{Binding SelectedTodo}"/>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>
