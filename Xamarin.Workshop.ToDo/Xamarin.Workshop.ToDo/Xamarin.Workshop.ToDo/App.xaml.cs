@@ -11,7 +11,9 @@ namespace Xamarin.Workshop.ToDo
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+		    Xamarin.Forms.DependencyService.Register<ITodoItemService, TodoItemService>();
+
+            MainPage = new NavigationPage(new MainPage());
 		}
 
 		protected override void OnStart ()

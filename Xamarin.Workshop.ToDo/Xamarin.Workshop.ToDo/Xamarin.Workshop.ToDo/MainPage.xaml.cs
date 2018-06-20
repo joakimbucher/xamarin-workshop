@@ -9,16 +9,13 @@ namespace Xamarin.Workshop.ToDo
 {
 	public partial class MainPage : ContentPage
 	{
+	    private TodoListViewModel todoList;
+
 	    public MainPage()
 		{
 			InitializeComponent();
-
-            var todoList = new TodoListViewModel();
-
-		    for (int i = 1; i <= 20; i++)
-		    {
-		        todoList.Todos.Add(new TodoItem { Name = $"Task {i}", IsDone = i % 2 == 0});
-            }
+		    
+            todoList = new TodoListViewModel(Navigation);
 
 		    BindingContext = todoList;
 		}
