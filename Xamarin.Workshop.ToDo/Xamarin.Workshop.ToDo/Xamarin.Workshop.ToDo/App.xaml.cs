@@ -12,8 +12,9 @@ namespace Xamarin.Workshop.ToDo
 		{
 			InitializeComponent();
 
-		    FreshIOC.Container.Register<ITodoItemService, TodoItemService>().AsSingleton();
-
+		    FreshIOC.Container.Register<ITodoRepository, TodoRepository>().AsSingleton();
+            FreshIOC.Container.Register<ITodoItemService, TodoItemService>().AsSingleton();
+            
             var page = FreshPageModelResolver.ResolvePageModel<TodoListPageModel>();
 		    var basicNavContainer = new FreshNavigationContainer(page);
 		    MainPage = basicNavContainer;

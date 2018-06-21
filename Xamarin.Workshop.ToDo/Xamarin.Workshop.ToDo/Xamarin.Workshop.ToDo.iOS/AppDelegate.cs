@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using FreshMvvm;
 using UIKit;
 
 namespace Xamarin.Workshop.ToDo.iOS
@@ -22,6 +23,8 @@ namespace Xamarin.Workshop.ToDo.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            FreshIOC.Container.Register<IFileHelper, FileHelper>();
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

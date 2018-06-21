@@ -1,37 +1,42 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Xamarin.Workshop.ToDo
 {
     public class TodoItemService : ITodoItemService
     {
-        private List<TodoItem> _todos = new List<TodoItem>();
-
-        public TodoItemService()
+        private readonly ITodoRepository _todoRepository;
+        
+        public TodoItemService(ITodoRepository todoRepository)
         {
-            for (int i = 1; i <= 5; i++)
-            {
-                _todos.Add(new TodoItem { Name = $"Task {i}", IsDone = i % 2 == 0 });
-            }
+            _todoRepository = todoRepository;
         }
 
-        public void AddTodo(TodoItem todoItem)
+        public async Task InsertTodoAsync(TodoItem todoItem)
         {
-            _todos.Add(todoItem);
+            await _todoRepository.InsertAsync(todoItem);
 
             MessagingCenter.Instance.Send<ITodoItemService, TodoItem>(this, Messages.TodoItemsAdded, todoItem);
         }
 
-        public void RemoveTodo(TodoItem todoItem)
+        public async Task UpdateTodoAsync(TodoItem todoItem)
         {
-            _todos.Remove(todoItem);
+            await _todoRepository.UpdateAsync(todoItem);
+
+            MessagingCenter.Instance.Send<ITodoItemService, TodoItem>(this, Messages.TodoItemsUpdated, todoItem);
+        }
+
+        public async Task RemoveTodoAsync(TodoItem todoItem)
+        {
+            await _todoRepository.DeleteItemAsync(todoItem);
 
             MessagingCenter.Instance.Send<ITodoItemService, TodoItem>(this, Messages.TodoItemsRemoved, todoItem);
         }
 
-        public IEnumerable<TodoItem> GetAllTodos()
+        public async Task<IEnumerable<TodoItem>> GetAllTodosAsync()
         {
-            return _todos;
+            return await _todoRepository.GetItemsAsync();
         }
     }
 }

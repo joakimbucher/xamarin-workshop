@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using FreshMvvm;
 using PropertyChanged;
 using Xamarin.Forms;
@@ -10,14 +12,14 @@ namespace Xamarin.Workshop.ToDo
     {
         private readonly ITodoItemService _todoItemService;
 
-        private TodoItem _selectedTodo;
+        private TodoItemViewModel _selectedTodo;
 
-        public ObservableCollection<TodoItem> Todos { get; } = new ObservableCollection<TodoItem>();
+        public ObservableCollection<TodoItemViewModel> Todos { get; } 
 
         public TodoListPageModel(ITodoItemService todoItemService)
         {
             _todoItemService = todoItemService;
-            Todos = new ObservableCollection<TodoItem>(_todoItemService.GetAllTodos());
+            Todos = new ObservableCollection<TodoItemViewModel>();
 
             // Todo: Unsubscribe events in case the view models view would be removed from the navigation stack
             MessagingCenter.Instance.Subscribe<ITodoItemService, TodoItem>(
@@ -25,7 +27,7 @@ namespace Xamarin.Workshop.ToDo
                 Messages.TodoItemsAdded,
                 (sender, todo) =>
                 {
-                    Todos.Add(todo);
+                    Todos.Add(new TodoItemViewModel(_todoItemService, todo));
                 });
 
             MessagingCenter.Instance.Subscribe<ITodoItemService, TodoItem>(
@@ -33,7 +35,12 @@ namespace Xamarin.Workshop.ToDo
                 Messages.TodoItemsRemoved,
                 (sender, todo) =>
                 {
-                    Todos.Remove(todo);
+                    var vm = Todos.SingleOrDefault(t => t.TodoItem.Id == todo.Id);
+
+                    if (vm != null)
+                    {
+                        Todos.Remove(vm);
+                    }
                 });
 
             AddTodoCommand = new Command(
@@ -42,7 +49,7 @@ namespace Xamarin.Workshop.ToDo
                     CoreMethods.PushPageModel<AddTodoItemPageModel>();
                 });
 
-            DeleteTodoCommand = new Command<TodoItem>(
+            DeleteTodoCommand = new Command<TodoItemViewModel>(
                 async (todo) => 
                  {
                     if (await CoreMethods.DisplayAlert(
@@ -53,14 +60,14 @@ namespace Xamarin.Workshop.ToDo
                         return;
                     }
 
-                    _todoItemService.RemoveTodo(todo);
+                    await _todoItemService.RemoveTodoAsync(todo.TodoItem);
                     SelectedTodo = null;
                     DeleteTodoCommand.ChangeCanExecute();
                 },
                 (todo) => SelectedTodo != null);
         }
 
-        public TodoItem SelectedTodo
+        public TodoItemViewModel SelectedTodo
         {
             get
             {
@@ -80,5 +87,20 @@ namespace Xamarin.Workshop.ToDo
         public Command AddTodoCommand { get; }
 
         public Command DeleteTodoCommand { get; }
+
+        public override void Init(object initData)
+        {
+            base.Init(initData);
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var todos = await _todoItemService.GetAllTodosAsync();
+
+                foreach (var todo in todos)
+                {
+                    Todos.Add(new TodoItemViewModel(_todoItemService, todo));
+                }
+            });
+        }
     }
 }

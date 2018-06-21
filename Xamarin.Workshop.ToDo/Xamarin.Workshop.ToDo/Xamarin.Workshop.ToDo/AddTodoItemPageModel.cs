@@ -18,7 +18,7 @@ namespace Xamarin.Workshop.ToDo
             OkCommand = new Command(
                 () =>
                 {
-                    _todoItemService.AddTodo(new TodoItem { Name = Name });
+                    _todoItemService.InsertTodoAsync(new TodoItem { Name = Name });
                     CoreMethods.PopPageModel();
                 },
                 () => string.IsNullOrWhiteSpace(Name) == false);
