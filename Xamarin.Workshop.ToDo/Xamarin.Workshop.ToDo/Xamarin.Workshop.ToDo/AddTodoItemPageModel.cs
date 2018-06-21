@@ -11,9 +11,9 @@ namespace Xamarin.Workshop.ToDo
 
         private string _name;
 
-        public AddTodoItemPageModel()
+        public AddTodoItemPageModel(ITodoItemService todoItemService)
         {
-            _todoItemService = DependencyService.Get<ITodoItemService>(DependencyFetchTarget.GlobalInstance);
+            _todoItemService = todoItemService;
 
             OkCommand = new Command(
                 () =>

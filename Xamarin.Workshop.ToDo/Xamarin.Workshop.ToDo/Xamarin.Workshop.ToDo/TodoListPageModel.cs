@@ -14,9 +14,9 @@ namespace Xamarin.Workshop.ToDo
 
         public ObservableCollection<TodoItem> Todos { get; } = new ObservableCollection<TodoItem>();
 
-        public TodoListPageModel()
+        public TodoListPageModel(ITodoItemService todoItemService)
         {
-            _todoItemService = Xamarin.Forms.DependencyService.Get<ITodoItemService>(DependencyFetchTarget.GlobalInstance);
+            _todoItemService = todoItemService;
             Todos = new ObservableCollection<TodoItem>(_todoItemService.GetAllTodos());
 
             // Todo: Unsubscribe events in case the view models view would be removed from the navigation stack
@@ -39,7 +39,7 @@ namespace Xamarin.Workshop.ToDo
             AddTodoCommand = new Command(
                 () =>
                 {
-                    CoreMethods.PushPageModel<AddTodoItemPageModel>(new AddTodoItemPageModel());
+                    CoreMethods.PushPageModel<AddTodoItemPageModel>();
                 });
 
             DeleteTodoCommand = new Command<TodoItem>(
