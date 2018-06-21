@@ -13,11 +13,18 @@ namespace Xamarin.Workshop.ToDo
             _todoRepository = todoRepository;
         }
 
-        public async Task AddTodoAsync(TodoItem todoItem)
+        public async Task InsertTodoAsync(TodoItem todoItem)
         {
-            await _todoRepository.SaveItemAsync(todoItem);
+            await _todoRepository.InsertAsync(todoItem);
 
             MessagingCenter.Instance.Send<ITodoItemService, TodoItem>(this, Messages.TodoItemsAdded, todoItem);
+        }
+
+        public async Task UpdateTodoAsync(TodoItem todoItem)
+        {
+            await _todoRepository.UpdateAsync(todoItem);
+
+            MessagingCenter.Instance.Send<ITodoItemService, TodoItem>(this, Messages.TodoItemsUpdated, todoItem);
         }
 
         public async Task RemoveTodoAsync(TodoItem todoItem)

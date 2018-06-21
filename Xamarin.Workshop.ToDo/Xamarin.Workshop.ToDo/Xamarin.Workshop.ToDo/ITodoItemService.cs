@@ -5,7 +5,9 @@ namespace Xamarin.Workshop.ToDo
 {
     public interface ITodoItemService
     {
-        Task AddTodoAsync(TodoItem todoItem);
+        Task InsertTodoAsync(TodoItem todoItem);
+
+        Task UpdateTodoAsync(TodoItem todoItem);
 
         Task RemoveTodoAsync(TodoItem todoItem);
 

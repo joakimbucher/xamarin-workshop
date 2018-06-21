@@ -9,8 +9,10 @@ namespace Xamarin.Workshop.ToDo
 
         Task<TodoItem> GetItemAsync(int id);
 
-        Task<int> SaveItemAsync(TodoItem todoItem);
-        
+        Task<int> UpdateAsync(TodoItem todoItem);
+
+        Task<int> InsertAsync(TodoItem todoItem);
+
         Task<int> DeleteItemAsync(TodoItem item);
     }
 }

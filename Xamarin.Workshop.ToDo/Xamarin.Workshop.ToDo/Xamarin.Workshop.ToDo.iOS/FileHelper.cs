@@ -1,10 +1,6 @@
 ﻿using System;
 using System.IO;
-using Xamarin.Forms;
-using Xamarin.Workshop.ToDo.iOS;
-using Xamarin.Workshop.ToDo;
 
-//[assembly: Dependency(typeof(FileHelper))]
 namespace Xamarin.Workshop.ToDo.iOS
 {
     public class FileHelper : IFileHelper

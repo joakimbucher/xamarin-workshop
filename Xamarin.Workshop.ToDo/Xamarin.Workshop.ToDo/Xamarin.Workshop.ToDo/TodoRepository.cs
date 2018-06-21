@@ -32,16 +32,14 @@ namespace Xamarin.Workshop.ToDo
             return await _database.Table<TodoItem>().Where(i => i.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<int> SaveItemAsync(TodoItem item)
+        public async Task<int> UpdateAsync(TodoItem item)
         {
-            if (item.Id != 0)
-            {
-                return await _database.UpdateAsync(item);
-            }
-            else
-            {
-                return await _database.InsertAsync(item);
-            }
+            return await _database.UpdateAsync(item);
+        }
+
+        public async Task<int> InsertAsync(TodoItem item)
+        {
+            return await _database.InsertAsync(item);
         }
 
         public async Task<int> DeleteItemAsync(TodoItem item)
