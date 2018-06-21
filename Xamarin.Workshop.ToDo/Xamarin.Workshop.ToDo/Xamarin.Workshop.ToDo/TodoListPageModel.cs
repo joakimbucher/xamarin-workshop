@@ -47,7 +47,7 @@ namespace Xamarin.Workshop.ToDo
                  {
                     if (await CoreMethods.DisplayAlert(
                             "Delete todo", 
-                            $"Do you realy want to delete todo '{todo.Name}'?",
+                            $"Do you really want to delete todo '{todo.Name}'?",
                             "Yes", "No") == false)
                     {
                         return;
