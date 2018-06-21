@@ -17,7 +17,7 @@ namespace Xamarin.Workshop.ToDo
         public TodoListPageModel(ITodoItemService todoItemService)
         {
             _todoItemService = todoItemService;
-            Todos = new ObservableCollection<TodoItem>(_todoItemService.GetAllTodos());
+            Todos = new ObservableCollection<TodoItem>(_todoItemService.GetAllTodosAsync().Result);
 
             // Todo: Unsubscribe events in case the view models view would be removed from the navigation stack
             MessagingCenter.Instance.Subscribe<ITodoItemService, TodoItem>(
@@ -53,7 +53,7 @@ namespace Xamarin.Workshop.ToDo
                         return;
                     }
 
-                    _todoItemService.RemoveTodo(todo);
+                    await _todoItemService.RemoveTodoAsync(todo);
                     SelectedTodo = null;
                     DeleteTodoCommand.ChangeCanExecute();
                 },

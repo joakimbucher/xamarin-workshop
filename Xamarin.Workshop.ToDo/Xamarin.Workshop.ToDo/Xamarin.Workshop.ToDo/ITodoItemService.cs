@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Xamarin.Workshop.ToDo
 {
     public interface ITodoItemService
     {
-        void AddTodo(TodoItem todoItem);
+        Task AddTodoAsync(TodoItem todoItem);
 
-        void RemoveTodo(TodoItem todoItem);
+        Task RemoveTodoAsync(TodoItem todoItem);
 
-        IEnumerable<TodoItem> GetAllTodos();
+        Task<IEnumerable<TodoItem>> GetAllTodosAsync();
     }
 }
