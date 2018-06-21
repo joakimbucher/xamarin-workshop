@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Xamarin.Workshop.ToDo"
              x:Class="Xamarin.Workshop.ToDo.TodoListPage"
              Title="My todo list">
-    <StackLayout Margin="20">
+    <StackLayout Margin="20" Orientation="{Binding LayoutOrientation}" SizeChanged="VisualElement_OnSizeChanged">
         <ListView ItemsSource="{Binding Todos}" SelectedItem="{Binding SelectedTodo}" VerticalOptions="FillAndExpand">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -17,7 +17,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Center">
             <Button Text="Add" Command="{Binding AddTodoCommand}" />
             <Button Text="Remove" Command="{Binding DeleteTodoCommand}" CommandParameter="{Binding SelectedTodo}"/>
         </StackLayout>

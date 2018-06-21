@@ -14,10 +14,12 @@ namespace Xamarin.Workshop.ToDo
 
 		    FreshIOC.Container.Register<ITodoRepository, TodoRepository>().AsSingleton();
             FreshIOC.Container.Register<ITodoItemService, TodoItemService>().AsSingleton();
-            
+		   
             var page = FreshPageModelResolver.ResolvePageModel<TodoListPageModel>();
 		    var basicNavContainer = new FreshNavigationContainer(page);
-		    MainPage = basicNavContainer;
+
+		    
+            MainPage = basicNavContainer;
         }
 
 		protected override void OnStart ()
