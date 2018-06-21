@@ -4,7 +4,9 @@
              xmlns:local="clr-namespace:Xamarin.Workshop.ToDo"
              x:Class="Xamarin.Workshop.ToDo.TodoListPage"
              Title="My todo list">
-    <StackLayout Margin="20" Orientation="{Binding LayoutOrientation}" SizeChanged="VisualElement_OnSizeChanged">
+    <StackLayout Orientation="{Binding LayoutOrientation}" 
+                 SizeChanged="VisualElement_OnSizeChanged" 
+                 Style="{StaticResource ResponsiveLayoutStyle}">
         <ListView ItemsSource="{Binding Todos}" SelectedItem="{Binding SelectedTodo}" VerticalOptions="FillAndExpand">
             <ListView.ItemTemplate>
                 <DataTemplate>
