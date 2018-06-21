@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Xamarin.Workshop.ToDo"
-             x:Class="Xamarin.Workshop.ToDo.MainPage"
+             x:Class="Xamarin.Workshop.ToDo.TodoListPage"
              Title="My todo list">
     <StackLayout Margin="20">
         <ListView ItemsSource="{Binding Todos}" SelectedItem="{Binding SelectedTodo}" VerticalOptions="FillAndExpand">

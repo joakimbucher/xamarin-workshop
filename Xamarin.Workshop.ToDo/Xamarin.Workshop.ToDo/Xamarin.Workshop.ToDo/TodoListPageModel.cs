@@ -1,9 +1,12 @@
 ﻿using System.Collections.ObjectModel;
+using FreshMvvm;
+using PropertyChanged;
 using Xamarin.Forms;
 
 namespace Xamarin.Workshop.ToDo
 {
-    public class TodoListViewModel : ViewModelBase
+    [AddINotifyPropertyChangedInterface]
+    public class TodoListPageModel : FreshBasePageModel
     {
         private readonly ITodoItemService _todoItemService;
 
@@ -11,8 +14,7 @@ namespace Xamarin.Workshop.ToDo
 
         public ObservableCollection<TodoItem> Todos { get; } = new ObservableCollection<TodoItem>();
 
-        public TodoListViewModel(INavigation navigation)
-            : base(navigation)
+        public TodoListPageModel()
         {
             _todoItemService = Xamarin.Forms.DependencyService.Get<ITodoItemService>(DependencyFetchTarget.GlobalInstance);
             Todos = new ObservableCollection<TodoItem>(_todoItemService.GetAllTodos());
@@ -37,7 +39,7 @@ namespace Xamarin.Workshop.ToDo
             AddTodoCommand = new Command(
                 () =>
                 {
-                    Navigation.PushAsync(new AddTodoItemPage());
+                    CoreMethods.PushPageModel<AddTodoItemPageModel>(new AddTodoItemPageModel());
                 });
 
             DeleteTodoCommand = new Command<TodoItem>(
@@ -61,8 +63,7 @@ namespace Xamarin.Workshop.ToDo
                 if (_selectedTodo != value)
                 {
                     _selectedTodo = value;
-                    OnPropertyChanged(nameof(SelectedTodo));
-
+                    
                     DeleteTodoCommand.ChangeCanExecute();
                 }
             }

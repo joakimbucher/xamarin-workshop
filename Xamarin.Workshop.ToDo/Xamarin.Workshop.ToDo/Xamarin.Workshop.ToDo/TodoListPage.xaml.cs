@@ -7,17 +7,11 @@ using Xamarin.Forms;
 
 namespace Xamarin.Workshop.ToDo
 {
-	public partial class MainPage : ContentPage
+	public partial class TodoListPage : ContentPage
 	{
-	    private TodoListViewModel todoList;
-
-	    public MainPage()
+	    public TodoListPage()
 		{
 			InitializeComponent();
-		    
-            todoList = new TodoListViewModel(Navigation);
-
-		    BindingContext = todoList;
 		}
 	}
 }

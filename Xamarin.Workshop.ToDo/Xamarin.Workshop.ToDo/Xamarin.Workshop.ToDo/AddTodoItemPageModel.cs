@@ -1,15 +1,17 @@
-﻿using Xamarin.Forms;
+﻿using FreshMvvm;
+using PropertyChanged;
+using Xamarin.Forms;
 
 namespace Xamarin.Workshop.ToDo
 {
-    public class AddTodoItemViewModel : ViewModelBase
+    [AddINotifyPropertyChangedInterface]
+    public class AddTodoItemPageModel : FreshBasePageModel
     {
         private readonly ITodoItemService _todoItemService;
 
         private string _name;
 
-        public AddTodoItemViewModel(INavigation navigation)
-            :base(navigation)
+        public AddTodoItemPageModel()
         {
             _todoItemService = DependencyService.Get<ITodoItemService>(DependencyFetchTarget.GlobalInstance);
 
@@ -17,7 +19,7 @@ namespace Xamarin.Workshop.ToDo
                 () =>
                 {
                     _todoItemService.AddTodo(new TodoItem { Name = Name });
-                    Navigation.PopAsync();
+                    CoreMethods.PopPageModel();
                 },
                 () => string.IsNullOrWhiteSpace(Name) == false);
         }
@@ -33,8 +35,7 @@ namespace Xamarin.Workshop.ToDo
                 if (_name != value)
                 {
                     _name = value;
-                    OnPropertyChanged(nameof(Name));
-
+                    
                     OkCommand.ChangeCanExecute();
                 }
             }

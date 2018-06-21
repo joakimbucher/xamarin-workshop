@@ -1,4 +1,5 @@
 using System;
+using FreshMvvm;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,8 +14,10 @@ namespace Xamarin.Workshop.ToDo
 
 		    Xamarin.Forms.DependencyService.Register<ITodoItemService, TodoItemService>();
 
-            MainPage = new NavigationPage(new MainPage());
-		}
+		    var page = FreshPageModelResolver.ResolvePageModel<TodoListPageModel>();
+		    var basicNavContainer = new FreshNavigationContainer(page);
+		    MainPage = basicNavContainer;
+        }
 
 		protected override void OnStart ()
 		{
