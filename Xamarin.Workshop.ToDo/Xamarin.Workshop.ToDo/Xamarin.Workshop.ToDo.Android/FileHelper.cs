@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Workshop.ToDo.Droid;
 using Environment = System.Environment;
 
-[assembly: Dependency(typeof(FileHelper))]
+//[assembly: Dependency(typeof(FileHelper))]
 namespace Xamarin.Workshop.ToDo.Droid
 {
     public class FileHelper : IFileHelper

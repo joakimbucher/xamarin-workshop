@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using FreshMvvm;
 using PropertyChanged;
 using Xamarin.Forms;
@@ -17,7 +18,7 @@ namespace Xamarin.Workshop.ToDo
         public TodoListPageModel(ITodoItemService todoItemService)
         {
             _todoItemService = todoItemService;
-            Todos = new ObservableCollection<TodoItem>(_todoItemService.GetAllTodosAsync().Result);
+            Todos = new ObservableCollection<TodoItem>();
 
             // Todo: Unsubscribe events in case the view models view would be removed from the navigation stack
             MessagingCenter.Instance.Subscribe<ITodoItemService, TodoItem>(
@@ -80,5 +81,20 @@ namespace Xamarin.Workshop.ToDo
         public Command AddTodoCommand { get; }
 
         public Command DeleteTodoCommand { get; }
+
+        public override void Init(object initData)
+        {
+            base.Init(initData);
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var todos = await _todoItemService.GetAllTodosAsync();
+
+                foreach (var todo in todos)
+                {
+                    Todos.Add(todo);
+                }
+            });
+        }
     }
 }

@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using FreshMvvm;
 
 namespace Xamarin.Workshop.ToDo.UWP
 {
@@ -39,7 +40,7 @@ namespace Xamarin.Workshop.ToDo.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
+            FreshIOC.Container.Register<IFileHelper, FileHelper>();
 
             Frame rootFrame = Window.Current.Content as Frame;
 

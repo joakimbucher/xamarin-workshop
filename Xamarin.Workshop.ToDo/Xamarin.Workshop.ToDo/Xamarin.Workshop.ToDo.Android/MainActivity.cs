@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using FreshMvvm;
 
 namespace Xamarin.Workshop.ToDo.Droid
 {
@@ -18,6 +19,8 @@ namespace Xamarin.Workshop.ToDo.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+
+            FreshIOC.Container.Register<IFileHelper, FileHelper>();
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
