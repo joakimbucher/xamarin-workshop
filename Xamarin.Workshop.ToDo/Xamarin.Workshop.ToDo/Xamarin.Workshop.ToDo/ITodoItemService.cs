@@ -2,7 +2,7 @@
 
 namespace Xamarin.Workshop.ToDo
 {
-    interface ITodoItemService
+    public interface ITodoItemService
     {
         void AddTodo(TodoItem todoItem);
 

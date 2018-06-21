@@ -8,9 +8,7 @@ namespace Xamarin.Workshop.ToDo
 	{
 		public AddTodoItemPage ()
 		{
-			InitializeComponent ();
-
-		    BindingContext = new AddTodoItemViewModel(Navigation);
+			InitializeComponent();
 		}
 	}
 }

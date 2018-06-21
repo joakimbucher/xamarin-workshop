@@ -9,7 +9,7 @@ namespace Xamarin.Workshop.ToDo
 
         public TodoItemService()
         {
-            for (int i = 1; i <= 20; i++)
+            for (int i = 1; i <= 5; i++)
             {
                 _todos.Add(new TodoItem { Name = $"Task {i}", IsDone = i % 2 == 0 });
             }

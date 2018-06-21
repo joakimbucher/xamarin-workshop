@@ -1,9 +1,12 @@
 ﻿using System.Collections.ObjectModel;
+using FreshMvvm;
+using PropertyChanged;
 using Xamarin.Forms;
 
 namespace Xamarin.Workshop.ToDo
 {
-    public class TodoListViewModel : ViewModelBase
+    [AddINotifyPropertyChangedInterface]
+    public class TodoListPageModel : FreshBasePageModel
     {
         private readonly ITodoItemService _todoItemService;
 
@@ -11,10 +14,9 @@ namespace Xamarin.Workshop.ToDo
 
         public ObservableCollection<TodoItem> Todos { get; } = new ObservableCollection<TodoItem>();
 
-        public TodoListViewModel(INavigation navigation)
-            : base(navigation)
+        public TodoListPageModel(ITodoItemService todoItemService)
         {
-            _todoItemService = Xamarin.Forms.DependencyService.Get<ITodoItemService>(DependencyFetchTarget.GlobalInstance);
+            _todoItemService = todoItemService;
             Todos = new ObservableCollection<TodoItem>(_todoItemService.GetAllTodos());
 
             // Todo: Unsubscribe events in case the view models view would be removed from the navigation stack
@@ -37,12 +39,20 @@ namespace Xamarin.Workshop.ToDo
             AddTodoCommand = new Command(
                 () =>
                 {
-                    Navigation.PushAsync(new AddTodoItemPage());
+                    CoreMethods.PushPageModel<AddTodoItemPageModel>();
                 });
 
             DeleteTodoCommand = new Command<TodoItem>(
-                (todo) =>
-                {
+                async (todo) => 
+                 {
+                    if (await CoreMethods.DisplayAlert(
+                            "Delete todo", 
+                            $"Do you really want to delete todo '{todo.Name}'?",
+                            "Yes", "No") == false)
+                    {
+                        return;
+                    }
+
                     _todoItemService.RemoveTodo(todo);
                     SelectedTodo = null;
                     DeleteTodoCommand.ChangeCanExecute();
@@ -61,8 +71,7 @@ namespace Xamarin.Workshop.ToDo
                 if (_selectedTodo != value)
                 {
                     _selectedTodo = value;
-                    OnPropertyChanged(nameof(SelectedTodo));
-
+                    
                     DeleteTodoCommand.ChangeCanExecute();
                 }
             }
