@@ -3,6 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xamarin.Workshop.ToDo.App">
 	<Application.Resources>
-    
-	</Application.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ResponsiveLayoutStyle" TargetType="Layout">
+                <Setter Property="Padding" >
+                    <OnIdiom x:TypeArguments="Thickness" 
+                         Tablet="30,0"
+                         Phone="20,0"
+                         Desktop="40,0"
+                         TV="50,0" />
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

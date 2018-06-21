@@ -7,5 +7,7 @@
         public const string TodoItemsUpdated = "TodoItemsUpdated";
 
         public const string TodoItemsRemoved = "TodoItemsRemoved";
+
+        public const string DeviceOrientationChanged = "DeviceOrientationChanged";
     }
 }

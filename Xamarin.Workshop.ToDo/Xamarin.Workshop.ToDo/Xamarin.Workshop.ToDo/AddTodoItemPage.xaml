@@ -4,7 +4,7 @@
              x:Class="Xamarin.Workshop.ToDo.AddTodoItemPage"
              Title="Add todo item">
     <ContentPage.Content>
-        <Grid Margin="20">
+        <Grid Style="{StaticResource ResponsiveLayoutStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>

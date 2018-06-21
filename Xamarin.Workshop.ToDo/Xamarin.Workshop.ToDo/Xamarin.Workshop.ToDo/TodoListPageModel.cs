@@ -4,6 +4,7 @@ using System.Linq;
 using FreshMvvm;
 using PropertyChanged;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace Xamarin.Workshop.ToDo
 {
@@ -14,7 +15,7 @@ namespace Xamarin.Workshop.ToDo
 
         private TodoItemViewModel _selectedTodo;
 
-        public ObservableCollection<TodoItemViewModel> Todos { get; } 
+        public ObservableCollection<TodoItemViewModel> Todos { get; }
 
         public TodoListPageModel(ITodoItemService todoItemService)
         {
@@ -50,20 +51,20 @@ namespace Xamarin.Workshop.ToDo
                 });
 
             DeleteTodoCommand = new Command<TodoItemViewModel>(
-                async (todo) => 
+                async (todo) =>
                  {
-                    if (await CoreMethods.DisplayAlert(
-                            "Delete todo", 
-                            $"Do you really want to delete todo '{todo.Name}'?",
-                            "Yes", "No") == false)
-                    {
-                        return;
-                    }
+                     if (await CoreMethods.DisplayAlert(
+                             "Delete todo",
+                             $"Do you really want to delete todo '{todo.Name}'?",
+                             "Yes", "No") == false)
+                     {
+                         return;
+                     }
 
-                    await _todoItemService.RemoveTodoAsync(todo.TodoItem);
-                    SelectedTodo = null;
-                    DeleteTodoCommand.ChangeCanExecute();
-                },
+                     await _todoItemService.RemoveTodoAsync(todo.TodoItem);
+                     SelectedTodo = null;
+                     DeleteTodoCommand.ChangeCanExecute();
+                 },
                 (todo) => SelectedTodo != null);
         }
 
@@ -78,11 +79,13 @@ namespace Xamarin.Workshop.ToDo
                 if (_selectedTodo != value)
                 {
                     _selectedTodo = value;
-                    
+
                     DeleteTodoCommand.ChangeCanExecute();
                 }
             }
         }
+
+        public StackOrientation LayoutOrientation { get; set; }
 
         public Command AddTodoCommand { get; }
 
@@ -91,7 +94,7 @@ namespace Xamarin.Workshop.ToDo
         public override void Init(object initData)
         {
             base.Init(initData);
-
+            
             Device.BeginInvokeOnMainThread(async () =>
             {
                 var todos = await _todoItemService.GetAllTodosAsync();
@@ -101,6 +104,39 @@ namespace Xamarin.Workshop.ToDo
                     Todos.Add(new TodoItemViewModel(_todoItemService, todo));
                 }
             });
+        }
+
+        protected override void ViewIsAppearing(object sender, EventArgs e)
+        {
+            base.ViewIsAppearing(sender, e);
+
+            MessagingCenter.Instance.Subscribe<TodoListPage, DeviceOrientation>(
+                this,
+                Messages.DeviceOrientationChanged,
+                (s, orientation) => UpdateLayoutOrientation(orientation));
+        }
+
+        protected override void ViewIsDisappearing(object sender, EventArgs e)
+        {
+            base.ViewIsDisappearing(sender, e);
+
+            MessagingCenter.Instance.Unsubscribe<TodoListPage, DeviceOrientation>(
+                this,
+                Messages.DeviceOrientationChanged);
+        }
+
+        private void UpdateLayoutOrientation(DeviceOrientation orientation)
+        {
+            if (orientation == DeviceOrientation.Landscape 
+                || orientation == DeviceOrientation.LandscapeLeft 
+                || orientation == DeviceOrientation.LandscapeRight)
+            {
+                LayoutOrientation = StackOrientation.Horizontal;
+            }
+            else
+            {
+                LayoutOrientation = StackOrientation.Vertical;
+            }
         }
     }
 }
