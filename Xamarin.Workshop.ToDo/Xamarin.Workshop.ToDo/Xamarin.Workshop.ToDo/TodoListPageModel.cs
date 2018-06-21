@@ -43,8 +43,16 @@ namespace Xamarin.Workshop.ToDo
                 });
 
             DeleteTodoCommand = new Command<TodoItem>(
-                (todo) =>
-                {
+                async (todo) => 
+                 {
+                    if (await CoreMethods.DisplayAlert(
+                            "Delete todo", 
+                            $"Do you realy want to delete todo '{todo.Name}'?",
+                            "Yes", "No") == false)
+                    {
+                        return;
+                    }
+
                     _todoItemService.RemoveTodo(todo);
                     SelectedTodo = null;
                     DeleteTodoCommand.ChangeCanExecute();
