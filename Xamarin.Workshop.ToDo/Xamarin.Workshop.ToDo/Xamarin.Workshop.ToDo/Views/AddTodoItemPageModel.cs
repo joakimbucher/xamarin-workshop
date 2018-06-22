@@ -1,8 +1,9 @@
 ﻿using FreshMvvm;
 using PropertyChanged;
 using Xamarin.Forms;
+using Xamarin.Workshop.ToDo.Business;
 
-namespace Xamarin.Workshop.ToDo
+namespace Xamarin.Workshop.ToDo.Views
 {
     [AddINotifyPropertyChangedInterface]
     public class AddTodoItemPageModel : FreshBasePageModel
@@ -22,6 +23,13 @@ namespace Xamarin.Workshop.ToDo
                     CoreMethods.PopPageModel();
                 },
                 () => string.IsNullOrWhiteSpace(Name) == false);
+
+            TakePictureCommand = new Command(
+                () =>
+                {
+                    _todoItemService.InsertTodoAsync(new TodoItem { Name = Name });
+                    CoreMethods.PushPageModel<TakePicturePageModel>(new TakePicturePageModel(_todoItemService) { Name = Name });
+                });
         }
 
         public string Name
@@ -42,5 +50,7 @@ namespace Xamarin.Workshop.ToDo
         }
         
         public Command OkCommand { get; }
+
+        public Command TakePictureCommand { get; }
     }
 }

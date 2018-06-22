@@ -13,13 +13,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="TodoListPage.xaml.cs">
+    <Compile Update="Views\TodoListPage.xaml.cs">
       <DependentUpon>TodoListPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="AddTodoItemPage.xaml">
+    <EmbeddedResource Update="Views\AddTodoItemPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TakePicturePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

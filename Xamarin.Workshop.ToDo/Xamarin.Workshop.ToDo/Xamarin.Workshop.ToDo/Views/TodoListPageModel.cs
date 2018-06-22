@@ -5,8 +5,9 @@ using FreshMvvm;
 using PropertyChanged;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Workshop.ToDo.Business;
 
-namespace Xamarin.Workshop.ToDo
+namespace Xamarin.Workshop.ToDo.Views
 {
     [AddINotifyPropertyChangedInterface]
     public class TodoListPageModel : FreshBasePageModel

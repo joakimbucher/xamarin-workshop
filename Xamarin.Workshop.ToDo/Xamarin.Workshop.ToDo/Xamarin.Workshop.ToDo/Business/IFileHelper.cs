@@ -1,4 +1,4 @@
-﻿namespace Xamarin.Workshop.ToDo
+﻿namespace Xamarin.Workshop.ToDo.Business
 {
     public interface IFileHelper
     {

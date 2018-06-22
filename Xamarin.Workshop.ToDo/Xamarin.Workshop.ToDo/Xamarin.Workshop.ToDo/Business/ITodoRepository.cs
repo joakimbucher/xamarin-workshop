@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Xamarin.Workshop.ToDo
+namespace Xamarin.Workshop.ToDo.Business
 {
     public interface ITodoRepository
     {
