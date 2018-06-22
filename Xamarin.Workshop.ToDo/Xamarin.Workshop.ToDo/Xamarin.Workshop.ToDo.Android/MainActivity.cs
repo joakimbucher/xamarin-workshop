@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using FreshMvvm;
+using Xamarin.Workshop.ToDo.Business;
 
 namespace Xamarin.Workshop.ToDo.Droid
 {

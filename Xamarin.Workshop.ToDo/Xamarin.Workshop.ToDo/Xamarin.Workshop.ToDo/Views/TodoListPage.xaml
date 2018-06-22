@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Xamarin.Workshop.ToDo"
-             x:Class="Xamarin.Workshop.ToDo.TodoListPage"
+             x:Class="Xamarin.Workshop.ToDo.Views.TodoListPage"
              Title="My todo list">
     <StackLayout Orientation="{Binding LayoutOrientation}" 
                  SizeChanged="VisualElement_OnSizeChanged" 

@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace Xamarin.Workshop.ToDo
+namespace Xamarin.Workshop.ToDo.Business
 {
     public class TodoItem
     {

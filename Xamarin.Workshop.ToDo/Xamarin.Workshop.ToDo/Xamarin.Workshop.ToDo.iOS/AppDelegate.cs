@@ -5,6 +5,7 @@ using System.Linq;
 using Foundation;
 using FreshMvvm;
 using UIKit;
+using Xamarin.Workshop.ToDo.Business;
 
 namespace Xamarin.Workshop.ToDo.iOS
 {

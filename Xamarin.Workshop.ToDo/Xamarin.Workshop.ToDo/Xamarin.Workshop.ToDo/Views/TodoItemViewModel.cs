@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Xamarin.Workshop.ToDo.Business;
 
-namespace Xamarin.Workshop.ToDo
+namespace Xamarin.Workshop.ToDo.Views
 {
     [PropertyChanged.AddINotifyPropertyChangedInterface]
     public class TodoItemViewModel

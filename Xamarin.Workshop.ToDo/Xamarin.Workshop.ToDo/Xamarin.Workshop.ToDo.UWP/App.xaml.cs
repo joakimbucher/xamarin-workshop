@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FreshMvvm;
+using Xamarin.Workshop.ToDo.Business;
 
 namespace Xamarin.Workshop.ToDo.UWP
 {
