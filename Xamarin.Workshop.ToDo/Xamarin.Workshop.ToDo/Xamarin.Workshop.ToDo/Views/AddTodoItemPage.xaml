@@ -13,12 +13,16 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Label Text="Name" Grid.Column="0" Grid.Row="0" />
             <Entry Text="{Binding Name}" Grid.Column="1" Grid.Row="0" />
 
-            <Button Text="Add todo item" Command="{Binding OkCommand}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" HorizontalOptions="Center"/>
+            <Label Text="Image" Grid.Column="0" Grid.Row="1" />
+            <Button Text="Take picture" Command="{Binding TakePictureCommand}" Grid.Column="1" Grid.Row="1" />
+
+            <Button Text="Add todo item" Command="{Binding OkCommand}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalOptions="Center"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

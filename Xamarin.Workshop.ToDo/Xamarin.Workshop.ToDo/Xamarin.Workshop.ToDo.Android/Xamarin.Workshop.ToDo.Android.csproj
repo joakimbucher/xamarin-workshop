@@ -90,6 +90,8 @@
     <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CameraPreview.cs" />
+    <Compile Include="CameraPreviewRenderer.cs" />
     <Compile Include="FileHelper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

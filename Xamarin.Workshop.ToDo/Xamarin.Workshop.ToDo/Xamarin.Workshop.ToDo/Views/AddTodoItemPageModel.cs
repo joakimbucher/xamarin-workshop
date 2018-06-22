@@ -23,6 +23,13 @@ namespace Xamarin.Workshop.ToDo.Views
                     CoreMethods.PopPageModel();
                 },
                 () => string.IsNullOrWhiteSpace(Name) == false);
+
+            TakePictureCommand = new Command(
+                () =>
+                {
+                    _todoItemService.InsertTodoAsync(new TodoItem { Name = Name });
+                    CoreMethods.PushPageModel<TakePicturePageModel>(new TakePicturePageModel(_todoItemService) { Name = Name });
+                });
         }
 
         public string Name
@@ -43,5 +50,7 @@ namespace Xamarin.Workshop.ToDo.Views
         }
         
         public Command OkCommand { get; }
+
+        public Command TakePictureCommand { get; }
     }
 }
