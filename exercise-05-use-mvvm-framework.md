@@ -5,3 +5,7 @@
 - Add DisplayAlert when deleting todo
 
 ![](./images/2018-06-21-09-47-34.png)
+
+## More information:
+- [FreshMvvm](https://github.com/rid00z/FreshMvvm)
+- [Fody PropertyChanged](https://github.com/Fody/PropertyChanged)

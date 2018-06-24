@@ -8,3 +8,10 @@
 - Store the todo items in a separate service
 - Use dependency injection to register and resolve the service in the different ViewModels to avoid dependencies between the ViewModels
 - Use the MessageCenter to send loosely coupled notifications to the ViewModels (instead of normal events)
+
+
+## More information:
+- [MVVM Pattern](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/mvvm)
+- [Simplifying Events with Commanding](https://blog.xamarin.com/simplifying-events-with-commanding/)
+- [Build-in DI](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/dependency-service/)
+- [MessagingCenter](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/messaging-center)
